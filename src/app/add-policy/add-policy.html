@@ -1,0 +1,724 @@
+<div class="add-policy-container">
+
+  <h2>Add New Policy</h2>
+
+  <form
+    [formGroup]="policyForm"
+    (ngSubmit)="onSubmit()">
+
+
+    <!-- ================================= -->
+    <!-- POLICY INFORMATION -->
+    <!-- ================================= -->
+
+    <section class="form-section">
+
+      <h3>Policy Information</h3>
+
+      <div class="form-grid">
+
+
+        <!-- Policy Number -->
+
+        <div class="form-field">
+
+          <label>Policy Number</label>
+
+          <input
+            type="text"
+            formControlName="policyNumber"
+            placeholder="Enter policy number"
+          >
+
+          @if (
+            policyForm.controls.policyNumber.touched &&
+            policyForm.controls.policyNumber.hasError('required')
+          ) {
+
+            <small class="error">
+              Policy number is required.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- Customer Name -->
+
+        <div class="form-field">
+
+          <label>Customer Name</label>
+
+          <input
+            type="text"
+            formControlName="customerName"
+            placeholder="Enter customer name"
+          >
+
+          @if (
+            policyForm.controls.customerName.touched &&
+            policyForm.controls.customerName.hasError('required')
+          ) {
+
+            <small class="error">
+              Customer name is required.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- Email -->
+
+        <div class="form-field">
+
+          <label>Email</label>
+
+          <input
+            type="email"
+            formControlName="customerEmail"
+            placeholder="Enter email"
+          >
+
+          @if (
+            policyForm.controls.customerEmail.touched &&
+            policyForm.controls.customerEmail.hasError('required')
+          ) {
+
+            <small class="error">
+              Email is required.
+            </small>
+
+          }
+
+          @if (
+            policyForm.controls.customerEmail.touched &&
+            policyForm.controls.customerEmail.hasError('email')
+          ) {
+
+            <small class="error">
+              Please enter a valid email address.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- Phone -->
+
+        <div class="form-field">
+
+          <label>Phone Number</label>
+
+          <input
+            type="tel"
+            formControlName="phoneNumber"
+            placeholder="Enter 10 digit phone number"
+          >
+
+          @if (
+            policyForm.controls.phoneNumber.touched &&
+            policyForm.controls.phoneNumber.hasError('required')
+          ) {
+
+            <small class="error">
+              Phone number is required.
+            </small>
+
+          }
+
+          @if (
+            policyForm.controls.phoneNumber.touched &&
+            policyForm.controls.phoneNumber.hasError('pattern')
+          ) {
+
+            <small class="error">
+              Phone number must contain exactly 10 digits.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- Start Date -->
+
+        <div class="form-field">
+
+          <label>Start Date</label>
+
+          <input
+            type="date"
+            formControlName="startDate"
+          >
+
+          @if (
+            policyForm.controls.startDate.touched &&
+            policyForm.controls.startDate.hasError('required')
+          ) {
+
+            <small class="error">
+              Start date is required.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- End Date -->
+
+        <div class="form-field">
+
+          <label>End Date</label>
+
+          <input
+            type="date"
+            formControlName="endDate"
+          >
+
+          @if (
+            policyForm.controls.endDate.touched &&
+            policyForm.controls.endDate.hasError('required')
+          ) {
+
+            <small class="error">
+              End date is required.
+            </small>
+
+          }
+
+          @if (
+            policyForm.controls.endDate.touched &&
+            policyForm.hasError('invalidDateRange')
+          ) {
+
+            <small class="error">
+              End date must be after start date.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div class="form-field">
+
+          <label>Status</label>
+
+          <select
+            formControlName="status">
+
+            <option value="Active">
+              Active
+            </option>
+
+            <option value="Cancelled">
+              Cancelled
+            </option>
+
+          </select>
+
+          <small class="info">
+            Status is automatically set to Expired
+            when the end date has passed.
+          </small>
+
+        </div>
+
+
+        <!-- Premium -->
+
+        <div class="form-field">
+
+          <label>Premium</label>
+
+          <input
+            type="number"
+            formControlName="premium"
+            placeholder="Enter premium"
+          >
+
+          @if (
+            policyForm.controls.premium.touched &&
+            policyForm.controls.premium.hasError('required')
+          ) {
+
+            <small class="error">
+              Premium is required.
+            </small>
+
+          }
+
+          @if (
+            policyForm.controls.premium.touched &&
+            policyForm.controls.premium.hasError('min')
+          ) {
+
+            <small class="error">
+              Premium must be greater than 0.
+            </small>
+
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- VEHICLE INFORMATION -->
+    <!-- ================================= -->
+
+    <section class="form-section">
+
+      <h3>Vehicle Information</h3>
+
+      <div class="form-grid">
+
+
+        <!-- Vehicle Make -->
+
+        <div class="form-field">
+
+          <label>Vehicle Make</label>
+
+          <input
+            type="text"
+            formControlName="vehicleMake"
+            placeholder="Example: Tata"
+          >
+
+          @if (
+            policyForm.controls.vehicleMake.touched &&
+            policyForm.controls.vehicleMake.hasError('required')
+          ) {
+
+            <small class="error">
+              Vehicle make is required.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- Vehicle Model -->
+
+        <div class="form-field">
+
+          <label>Vehicle Model</label>
+
+          <input
+            type="text"
+            formControlName="vehicleModel"
+            placeholder="Example: Nexon"
+          >
+
+          @if (
+            policyForm.controls.vehicleModel.touched &&
+            policyForm.controls.vehicleModel.hasError('required')
+          ) {
+
+            <small class="error">
+              Vehicle model is required.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- Vehicle Year -->
+
+        <div class="form-field">
+
+          <label>Vehicle Year</label>
+
+          <input
+            type="number"
+            formControlName="vehicleYear"
+          >
+
+          @if (
+            policyForm.controls.vehicleYear.touched &&
+            policyForm.controls.vehicleYear.hasError('required')
+          ) {
+
+            <small class="error">
+              Vehicle year is required.
+            </small>
+
+          }
+
+          @if (
+            policyForm.controls.vehicleYear.touched &&
+            policyForm.controls.vehicleYear.hasError('min')
+          ) {
+
+            <small class="error">
+              Vehicle year must be 1900 or later.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- Registration Number -->
+
+        <div class="form-field">
+
+          <label>Registration Number</label>
+
+          <input
+            type="text"
+            formControlName="registrationNumber"
+            placeholder="Example: TN01AB1234"
+          >
+
+          @if (
+            policyForm.controls.registrationNumber.touched &&
+            policyForm.controls.registrationNumber.hasError('required')
+          ) {
+
+            <small class="error">
+              Registration number is required.
+            </small>
+
+          }
+
+          @if (
+            policyForm.controls.registrationNumber.touched &&
+            policyForm.controls.registrationNumber.hasError('pattern')
+          ) {
+
+            <small class="error">
+              Enter a valid registration number.
+              Example: TN01AB1234
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- VIN -->
+
+        <div class="form-field">
+
+          <label>VIN</label>
+
+          <input
+            type="text"
+            formControlName="vin"
+            placeholder="Enter 17 character VIN"
+          >
+
+          @if (
+            policyForm.controls.vin.touched &&
+            policyForm.controls.vin.hasError('required')
+          ) {
+
+            <small class="error">
+              VIN is required.
+            </small>
+
+          }
+
+          @if (
+            policyForm.controls.vin.touched &&
+            policyForm.controls.vin.hasError('pattern')
+          ) {
+
+            <small class="error">
+              VIN must contain exactly 17 valid characters.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- Fuel Type -->
+
+        <div class="form-field">
+
+          <label>Fuel Type</label>
+
+          <select
+            formControlName="fuelType">
+
+            <option value="Petrol">
+              Petrol
+            </option>
+
+            <option value="Diesel">
+              Diesel
+            </option>
+
+            <option value="Electric">
+              Electric
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Annual Mileage -->
+
+        <div class="form-field">
+
+          <label>Annual Mileage</label>
+
+          <input
+            type="number"
+            formControlName="annualMileage"
+            placeholder="Enter mileage"
+          >
+
+          @if (
+            policyForm.controls.annualMileage.touched &&
+            policyForm.controls.annualMileage.hasError('required')
+          ) {
+
+            <small class="error">
+              Annual mileage is required.
+            </small>
+
+          }
+
+          @if (
+            policyForm.controls.annualMileage.touched &&
+            policyForm.controls.annualMileage.hasError('min')
+          ) {
+
+            <small class="error">
+              Mileage cannot be negative.
+            </small>
+
+          }
+
+        </div>
+
+
+        <!-- Vehicle Value -->
+
+        <div class="form-field">
+
+          <label>Vehicle Value</label>
+
+          <input
+            type="number"
+            formControlName="vehicleValue"
+            placeholder="Enter vehicle value"
+          >
+
+          @if (
+            policyForm.controls.vehicleValue.touched &&
+            policyForm.controls.vehicleValue.hasError('required')
+          ) {
+
+            <small class="error">
+              Vehicle value is required.
+            </small>
+
+          }
+
+          @if (
+            policyForm.controls.vehicleValue.touched &&
+            policyForm.controls.vehicleValue.hasError('min')
+          ) {
+
+            <small class="error">
+              Vehicle value must be greater than 0.
+            </small>
+
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- EV INFORMATION -->
+    <!-- ================================= -->
+
+    @if (isElectricVehicle()) {
+
+      <section class="form-section">
+
+        <h3>EV Information</h3>
+
+        <div class="form-grid">
+
+
+          <!-- Battery Capacity -->
+
+          <div class="form-field">
+
+            <label>
+              Battery Capacity (kWh)
+            </label>
+
+            <input
+              type="number"
+              formControlName="batteryCapacity"
+            >
+
+          </div>
+
+
+          <!-- Charging Type -->
+
+          <div class="form-field">
+
+            <label>Charging Type</label>
+
+            <select
+              formControlName="chargingType">
+
+              <option value="AC">
+                AC
+              </option>
+
+              <option value="DC">
+                DC
+              </option>
+
+              <option value="AC/DC">
+                AC/DC
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- Home Charging -->
+
+          <div class="form-field checkbox-field">
+
+            <label>
+
+              <input
+                type="checkbox"
+                formControlName="homeChargingAvailable"
+              >
+
+              Home Charging Available
+
+            </label>
+
+          </div>
+
+
+          <!-- ADAS -->
+
+          <div class="form-field">
+
+            <label>ADAS Level</label>
+
+            <input
+              type="number"
+              formControlName="adasLevel"
+              min="0"
+              max="5"
+            >
+
+          </div>
+
+
+          <!-- Charging Range -->
+
+          <div class="form-field">
+
+            <label>
+              Charging Range (km)
+            </label>
+
+            <input
+              type="number"
+              formControlName="chargingRange"
+            >
+
+          </div>
+
+
+          <!-- Battery Warranty -->
+
+          <div class="form-field">
+
+            <label>
+              Battery Warranty (years)
+            </label>
+
+            <input
+              type="number"
+              formControlName="batteryWarranty"
+            >
+
+          </div>
+
+
+          <!-- Battery Health -->
+
+          <div class="form-field">
+
+            <label>
+              Battery Health (%)
+            </label>
+
+            <input
+              type="number"
+              formControlName="batteryHealth"
+              min="0"
+              max="100"
+            >
+
+          </div>
+
+        </div>
+
+      </section>
+
+    }
+
+
+
+    <!-- ================================= -->
+    <!-- FORM ACTIONS -->
+    <!-- ================================= -->
+
+    <div class="form-actions">
+
+      <button type="submit">
+        Add Policy
+      </button>
+
+      <button
+        type="reset"
+        class="reset-button">
+
+        Reset
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

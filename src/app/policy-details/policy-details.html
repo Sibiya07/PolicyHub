@@ -1,0 +1,138 @@
+<h2>Policy Details</h2>
+
+@if (policy) {
+
+  <div class="policy-details">
+
+    <h3>{{ policy.policyNumber }}</h3>
+
+    <h4>Customer Information</h4>
+
+    <p>
+      <strong>Name:</strong>
+      {{ policy.customerName }}
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      {{ policy.customerEmail }}
+    </p>
+
+    <p>
+      <strong>Phone:</strong>
+      {{ policy.phoneNumber }}
+    </p>
+
+    <h4>Policy Information</h4>
+
+    <p>
+      <strong>Start Date:</strong>
+      {{ policy.startDate }}
+    </p>
+
+    <p>
+      <strong>End Date:</strong>
+      {{ policy.endDate }}
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+      {{ policy.status }}
+    </p>
+
+    <p>
+      <strong>Premium:</strong>
+      {{ policy.premium | currency:'INR' }}
+    </p>
+
+    <h4>Vehicle Information</h4>
+
+    <p>
+      <strong>Make:</strong>
+      {{ policy.vehicleMake }}
+    </p>
+
+    <p>
+      <strong>Model:</strong>
+      {{ policy.vehicleModel }}
+    </p>
+
+    <p>
+      <strong>Year:</strong>
+      {{ policy.vehicleYear }}
+    </p>
+
+    <p>
+      <strong>Registration Number:</strong>
+      {{ policy.registrationNumber }}
+    </p>
+
+    <p>
+      <strong>VIN:</strong>
+      {{ policy.vin }}
+    </p>
+
+    <p>
+      <strong>Fuel Type:</strong>
+      {{ policy.fuelType }}
+    </p>
+
+    <p>
+      <strong>Annual Mileage:</strong>
+      {{ policy.annualMileage }} km
+    </p>
+
+    <p>
+      <strong>Vehicle Value:</strong>
+      {{ policy.vehicleValue | currency:'INR' }}
+    </p>
+
+    @if (policy.fuelType === 'Electric') {
+
+      <h4>EV Information</h4>
+
+      <p>
+        <strong>Battery Capacity:</strong>
+        {{ policy.batteryCapacity }} kWh
+      </p>
+
+      <p>
+        <strong>Charging Type:</strong>
+        {{ policy.chargingType }}
+      </p>
+
+      <p>
+        <strong>Home Charging Available:</strong>
+        {{ policy.homeChargingAvailable ? 'Yes' : 'No' }}
+      </p>
+
+      <p>
+        <strong>ADAS Level:</strong>
+        {{ policy.adasLevel }}
+      </p>
+
+      <p>
+        <strong>Charging Range:</strong>
+        {{ policy.chargingRange }} km
+      </p>
+
+      <p>
+        <strong>Battery Warranty:</strong>
+        {{ policy.batteryWarranty }} years
+      </p>
+
+      <p>
+        <strong>Battery Health:</strong>
+        {{ policy.batteryHealth }}%
+      </p>
+
+    }
+
+  </div>
+
+}
+@else {
+
+  <p>Policy not found.</p>
+
+}

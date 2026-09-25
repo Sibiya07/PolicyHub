@@ -1,0 +1,45 @@
+.app-container {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+}
+
+.header {
+  background-color: #1f2937;
+  color: white;
+  padding: 20px 30px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header p {
+  margin: 5px 0 0;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background-color: #374151;
+}
+
+.main-content {
+  padding: 30px;
+}

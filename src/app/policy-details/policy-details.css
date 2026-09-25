@@ -1,0 +1,64 @@
+.policy-details {
+  width: 800px;
+  max-width: 90%;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Main page heading */
+h2 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  color: #1f2937;
+}
+
+/* Policy number */
+.policy-details h3 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  color: #1d4ed8;
+  font-size: 22px;
+}
+
+/* Section headings */
+.policy-details h4 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e5e7eb;
+  color: #374151;
+  font-size: 18px;
+}
+
+/* Information rows */
+.policy-details p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 12px 5px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #4b5563;
+}
+
+/* Label */
+.policy-details p strong {
+  color: #1f2937;
+}
+
+/* Policy not found */
+.policy-details + p {
+  text-align: center;
+  margin-top: 40px;
+  color: #6b7280;
+  font-size: 18px;
+}

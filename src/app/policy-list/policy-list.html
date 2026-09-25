@@ -1,0 +1,79 @@
+<h2>Policies</h2>
+
+<div class="search-box">
+
+  <input
+    type="text"
+    placeholder="Search by policy number, customer, vehicle..."
+    [value]="searchText()"
+    (input)="searchText.set($any($event.target).value)"
+  >
+
+</div>
+
+<div class="policy-container">
+
+  @for (policy of filteredPolicies; track policy.policyNumber) {
+
+    <div class="policy-card">
+
+      <h3>{{ policy.policyNumber }}</h3>
+
+      <p>
+        <strong>Customer:</strong>
+        {{ policy.customerName }}
+      </p>
+
+      <p>
+        <strong>Vehicle:</strong>
+        {{ policy.vehicleMake }}
+        {{ policy.vehicleModel }}
+      </p>
+
+      <p>
+        <strong>Registration:</strong>
+        {{ policy.registrationNumber }}
+      </p>
+
+      <p>
+        <strong>Fuel Type:</strong>
+        {{ policy.fuelType }}
+      </p>
+
+      <p>
+        <strong>Premium:</strong>
+        {{ policy.premium | currency:'INR' }}
+      </p>
+
+      <p>
+  <strong>Status:</strong>
+
+  <span
+    class="status"
+    [class.active]="policy.status === 'Active'"
+    [class.expired]="policy.status === 'Expired'"
+    [class.cancelled]="policy.status === 'Cancelled'">
+
+    {{ policy.status }}
+
+  </span>
+</p>
+
+      <button
+        (click)="viewPolicy(policy.policyNumber)">
+        View Details
+      </button>
+
+    </div>
+
+  }
+
+  @empty {
+
+    <p class="no-results">
+      No policies found.
+    </p>
+
+  }
+
+</div>
